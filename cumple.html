@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para mi cosita 💚</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background: url(https://pixabay.com/es/videos/girasoles-flores-atardecer-cielo-176529/);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* VIDEO DE FONDO */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.card {
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 420px;
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from {opacity: 0; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+h1 {
+    color: #2e7d32;
+}
+
+.nombre {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1b5e20;
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1);}
+    50% { transform: scale(1.1);}
+    100% { transform: scale(1);}
+}
+
+button {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+    margin-top: 20px;
+}
+
+img {
+    width: 120px;
+    margin-top: 10px;
+}
+
+.sunflower {
+    position: absolute;
+    font-size: 25px;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    0% { transform: translateY(-100px);}
+    100% { transform: translateY(100vh);}
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    animation: subir 4s linear infinite;
+}
+
+@keyframes subir {
+    0% { transform: translateY(100vh);}
+    100% { transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO DE FONDO -->
+<video autoplay muted loop id="bg-video">
+    <source src="cumplea.html/girasoles.mp4" type="video/mp4">
+</video>
+
+<div class="card">
+    <h1>💚 Tengo algo para ti 💚</h1>
+    <p>Haz clic aqui princesa 🥺</p>
+
+    <button onclick="abrirCarta()">Abrir 💌</button>
+
+    <div id="carta" class="hidden">
+        <div class="nombre">💖 FELIZ CUMPLEAÑOS MI COSITA 💖</div>
+
+        <img src="">
+
+        <p>
+            Mi cosita 💚<br><br>
+
+            Hoy cumple años la persona más especial de mi vida 🥺✨<br><br>
+
+            Eres lo mejor que me ha pasado 💖<br>
+            haces que cada día sea increíble 🌻<br><br>
+
+            eres mi solecito💚, eres única, divertida<br>
+            y perfecta tal como eres 😍<br><br>
+
+            Gracias por existir y por estar conmigo 💕<br><br>
+
+            Te amo muchísimo mi cosita 💚🌻
+        </p>
+    </div>
+</div>
+
+<!-- MUSICA -->
+<audio id="musica">
+    <source src="cumplea.html/cancion.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function abrirCarta() {
+    document.getElementById("carta").style.display = "block";
+
+    let musica = document.getElementById("musica");
+    musica.volume = 0.4;
+    musica.play();
+}
+
+/* GIRASOLES */
+setInterval(() => {
+    let girasol = document.createElement("div");
+    girasol.className = "sunflower";
+    girasol.innerHTML = "🌻";
+    girasol.style.left = Math.random() * window.innerWidth + "px";
+    girasol.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(girasol);
+    setTimeout(() => girasol.remove(), 8000);
+}, 300);
+
+/* CORAZONES */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>
